@@ -1,0 +1,28 @@
+name: snipeit
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+   branches: ["main"]
+  workflow_dispatch: 
+  
+jobs:
+  start:
+
+    runs-on: ubuntu-latest
+
+    steps:
+         # Runs a set of commands using the runners shell
+      - name: executing remote ssh commands using ssh key
+        uses: Reena221289/cloudsnipeIT@main
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            whoami
+            cd /var/www/cloudsnipeIT
+            pwd
+            git pull origin main
