@@ -1,7 +1,7 @@
 @extends('layouts/default')
 {{-- Page title --}}
 @section('title')
-{{ trans('Changed Dashboard') }}
+{{ trans('general.Dashboard-Pearlthoughts') }}
 @parent
 @stop
 
