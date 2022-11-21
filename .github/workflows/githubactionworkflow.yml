@@ -2,10 +2,7 @@ name: snipeit
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-   branches: ["main"]
-  workflow_dispatch: 
+    branches: main
   
 jobs:
   deploy:
@@ -21,11 +18,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 22
-        
-        
-          working-directory: /var/www/cloudsnipeIT
-          command: |
-            git fetch --all
+          script: |
+            whoami
+            cd /var/www/cloudsnipeIT
+            pwd
             git pull origin main
-            docker-compose up -d
-          comment: building docker containers
