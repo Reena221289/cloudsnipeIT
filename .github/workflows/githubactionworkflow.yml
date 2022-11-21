@@ -23,7 +23,7 @@ jobs:
           port: 22
         
         
-          working-directory: /home/ubuntu
+          working-directory: /var/www/cloudsnipeIT
           command: |
             git fetch --all
             git pull origin main
