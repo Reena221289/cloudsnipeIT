@@ -8,7 +8,7 @@ on:
   workflow_dispatch: 
   
 jobs:
-  start:
+  deploy:
 
     runs-on: ubuntu-latest
 
