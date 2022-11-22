@@ -1,0 +1,31 @@
+name: snipeit
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+   branches: ["main"]
+  workflow_dispatch: 
+  
+jobs:
+  start:
+
+    runs-on: ubuntu-latest
+
+    steps:
+         # Runs a set of commands using the runners shell
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USER }}
+           key: ${{ secrets.KEY }}
+           port: ${{ secrets.PORT }}
+           script: |
+             whoami
+             git clone https://github.com/Reena221289/cloudsnipeIT.git
+             cd /home/ubuntu/cloudsnipeIT
+             git init
+             git pull origin main
+             sudo docker-compose up -d
+             sudo docker-compose up --build -d
